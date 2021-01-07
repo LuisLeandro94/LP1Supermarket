@@ -1,0 +1,4 @@
+/Users/luisleandro/Desktop/IPCA/Linguagens de Programação I/ProjetoFinal/LP1Supermarket/Supermercado/Supermercado/obj/Debug/netcoreapp3.1/Supermercado.csprojAssemblyReference.cache
+/Users/luisleandro/Desktop/IPCA/Linguagens de Programação I/ProjetoFinal/LP1Supermarket/Supermercado/Supermercado/obj/Debug/netcoreapp3.1/Supermercado.AssemblyInfoInputs.cache
+/Users/luisleandro/Desktop/IPCA/Linguagens de Programação I/ProjetoFinal/LP1Supermarket/Supermercado/Supermercado/obj/Debug/netcoreapp3.1/Supermercado.AssemblyInfo.cs
+/Users/luisleandro/Desktop/IPCA/Linguagens de Programação I/ProjetoFinal/LP1Supermarket/Supermercado/Supermercado/obj/Debug/netcoreapp3.1/Supermercado.csproj.CoreCompileInputs.cache
