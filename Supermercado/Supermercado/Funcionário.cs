@@ -84,7 +84,11 @@ namespace Supermercado
         }
         #endregion
 
+<<<<<<< Updated upstream
        #region Listar Funcionarios
+=======
+        #region Listar Funcionarios
+>>>>>>> Stashed changes
         public void ListEmployee()
         {
             string fileName = "listaDeFuncionarios.txt";
