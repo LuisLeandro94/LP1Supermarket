@@ -1,18 +1,21 @@
 ﻿<Properties StartupConfiguration="{E813BF04-4E94-4F2C-A87A-C02AA5F4402D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Supermercado/Caixa.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Supermercado/CommandTypes.cs">
     <Files>
       <File FileName="Supermercado/Program.cs" Line="9" Column="47" />
-      <File FileName="Supermercado/Funcionário.cs" Line="10" Column="43" />
-      <File FileName="Supermercado/Gerente.cs" Line="10" Column="10" />
+      <File FileName="Supermercado/Funcionário.cs" Line="24" Column="37" />
+      <File FileName="Supermercado/Gerente.cs" Line="11" Column="10" />
       <File FileName="Supermercado/Repositor.cs" Line="6" Column="36" />
       <File FileName="Supermercado/Caixa.cs" Line="6" Column="31" />
+      <File FileName="Supermercado/Produtos.cs" Line="20" Column="1" />
+      <File FileName="Supermercado/Categoria.cs" Line="12" Column="27" />
+      <File FileName="Supermercado/CommandTypes.cs" Line="7" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Supermercado" expanded="True">
             <Node name="Supermercado" expanded="True">
-              <Node name="Caixa.cs" selected="True" />
+              <Node name="CommandTypes.cs" selected="True" />
             </Node>
           </Node>
         </State>
