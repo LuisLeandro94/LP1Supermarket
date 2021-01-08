@@ -84,7 +84,7 @@ namespace Supermercado
         }
         #endregion
 
-        #region Listar Funcionarios
+       #region Listar Funcionarios
         public void ListEmployee()
         {
             string fileName = "listaDeFuncionarios.txt";

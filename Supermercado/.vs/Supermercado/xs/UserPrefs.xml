@@ -1,20 +1,11 @@
 ﻿<Properties StartupConfiguration="{E813BF04-4E94-4F2C-A87A-C02AA5F4402D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Supermercado/Gerente.cs">
-    <Files>
-      <File FileName="Supermercado/Program.cs" Line="9" Column="47" />
-      <File FileName="Supermercado/Funcionário.cs" Line="87" Column="9" />
-      <File FileName="Supermercado/Gerente.cs" Line="10" Column="10" />
-      <File FileName="Supermercado/Repositor.cs" Line="6" Column="36" />
-      <File FileName="Supermercado/Caixa.cs" Line="6" Column="31" />
-      <File FileName="Supermercado/Produtos.cs" Line="51" Column="32" />
-      <File FileName="Supermercado/Categoria.cs" Line="12" Column="27" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Supermercado" expanded="True">
             <Node name="Supermercado" expanded="True">
-              <Node name="Gerente.cs" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
