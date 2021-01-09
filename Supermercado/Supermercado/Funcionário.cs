@@ -22,40 +22,113 @@ namespace Supermercado
         public string password { get; set; }
         public bool active { get; set; }
 
-        public List<Funcionário> employeeList;
 
+        //ATENCAO - TESTE
+        public string cargo { get; set; }
+
+        public List<Funcionário> employeeList;
+        public List<Gerente> gerenteList;
         public Funcionário()
         {
+            this.employeeList = new List<Funcionário>();
+            this.gerenteList = new List<Gerente>();
             active = true;
             entryTime = DateTime.Now;
         }
 
+        public Funcionário(string firstName, string lastName ,string userName, string password)
+        {
+           // this.id = id;
+            this.firstName = firstName;
+            this.lastName = lastName;
+           // this.phoneNumber = phoneNumber;
+            //this.address = address;
+            //this.birthDate = birthDate;
+            //this.salary = salary;
+            //this.entryTime = entryTime;
+            //this.authorityId = authorityId;
+            this.userName = userName;
+            this.password = password;
+            //this.active = active;
+            this.cargo = "Funcionario";
+        }
+
+        public override string ToString()
+        {
+            string result = "Nome" + "       " + "UserName " + "    " + "PassWord" + "\n";
+            foreach (Funcionário f in  this.employeeList)
+            {
+                result += f.firstName + " " + f.lastName + "     " + f.userName + "     " + f.password + " \n";
+            }
+
+            return result;
+        }
+
+
         #region Login
-        public void LoginForm()
+        public virtual void LoginForm()
         {
             bool successfull = false;
-            while(!successfull)
+          
+            do
             {
+              
+                Console.WriteLine("--------LOGIN--------");
                 Console.WriteLine("Username:");
-                var username = Console.ReadLine();
+                string username = Console.ReadLine();
                 Console.WriteLine("Password:");
-                var password = Console.ReadLine();
+                string password = Console.ReadLine();
 
-                foreach (Funcionário funcionario in employeeList)
+               //AQUI ESTÁ ALGUM ERRO...METO OS DADOS DIREITOS E DA ERRO, TENHO DE CORRIGIR
+                foreach (Gerente gerente in gerenteList)
                 {
-                    if(username == funcionario.userName && password == funcionario.password)
+
+
+                    if (username == gerente.g_userName && password == gerente.g_password)
                     {
                         Console.WriteLine("Login bem sucedido!");
-                        Console.ReadLine();
                         successfull = true;
+                        Console.Clear();
+                        //SE QUISERES VER ISTO, COPIA PARA O LOGIN DO FUNCIONARIO 
+                        Gerente gr = new Gerente();
+                        gr.MenuGerente();
+
+
                         break;
                     }
-                    if(!successfull)
+                    else
                     {
-                        Console.WriteLine("Username ou password inválido. Tente novamente.");
+                        Console.WriteLine("Username ou Password estão errrados.\n");
                     }
                 }
-            }
+                
+                foreach (Funcionário funcionario in employeeList)
+                {
+                
+                    
+                    if (username == funcionario.userName  &&  password == funcionario.password)
+                    {
+                        Console.WriteLine("Login bem sucedido!");
+                        successfull = true;
+                        Console.Clear();
+                        
+
+
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Username ou Password estão errrados.\n");
+                    }
+                }
+
+               
+
+
+
+            } while (successfull==false);
+           
+          
         }
         #endregion
 
@@ -63,55 +136,62 @@ namespace Supermercado
         public void CreateEmployee()
         {
             string fileLocation = Directory.GetCurrentDirectory();
-            string fileName = "listaDeFuncionarios.txt";
+            //string fileName = "listaDeFuncionarios.txt";
+
+            Console.WriteLine("nome:");
+            var username = Console.ReadLine();
+            Console.WriteLine("passe:");
+            var password = Console.ReadLine();
+
+           
+
+            Console.WriteLine("Sucesso");
 
             //Validação
+            /*
+           if (File.Exists(fileName))
+           {
+               Console.WriteLine("Ficheiro antigo eliminado.");
+               File.Delete(fileName);
+           }
 
-            if(File.Exists(fileName))
+           FileStream fileStream = File.Create(fileName);
+           BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+           foreach (Funcionário employeeToCreate in employeeList)
+           {
+               binaryFormatter.Serialize(fileStream, employeeToCreate);
+           }
+           fileStream.Close();
+       }*/
+
+            #endregion
+
+            #region Listar Funcionarios
+            //public void ListEmployee()
             {
-                Console.WriteLine("Ficheiro antigo eliminado.");
-                File.Delete(fileName);
-            }
+                string fileName = "listaDeFuncionarios.txt";
 
-            FileStream fileStream = File.Create(fileName);
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
+                //Validação
 
-            foreach (Funcionário employeeToCreate in employeeList)
-            {
-                binaryFormatter.Serialize(fileStream, employeeToCreate);
-            }
-            fileStream.Close();
-        }
-        #endregion
-
-<<<<<<< Updated upstream
-       #region Listar Funcionarios
-=======
-        #region Listar Funcionarios
->>>>>>> Stashed changes
-        public void ListEmployee()
-        {
-            string fileName = "listaDeFuncionarios.txt";
-
-            //Validação
-
-            if(File.Exists(fileName))
-            {
-                FileStream fileStream = File.OpenRead(fileName);
-                BinaryFormatter binaryFormatter = new BinaryFormatter();
-
-                while(fileStream.Position > fileStream.Length)
+                if (File.Exists(fileName))
                 {
-                    Funcionário employeeToBeListed = binaryFormatter.Deserialize(fileStream) as Funcionário;
-                    employeeList.Add(employeeToBeListed);
+                    FileStream fileStream = File.OpenRead(fileName);
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+                    while (fileStream.Position > fileStream.Length)
+                    {
+                        Funcionário employeeToBeListed = binaryFormatter.Deserialize(fileStream) as Funcionário;
+                        employeeList.Add(employeeToBeListed);
+                    }
+                    fileStream.Close();
                 }
-                fileStream.Close();
+                else
+                {
+                    Console.WriteLine("Este ficheiro não existe para leitura!");
+                }
             }
-            else
-            {
-                Console.WriteLine("Este ficheiro não existe para leitura!");
-            }
+            #endregion
         }
-        #endregion
     }
 }
