@@ -10,14 +10,15 @@ namespace Supermercado
     public class Gerente : Funcionário
     {
 
+        public Gerente() : base()
+        {
+            this.employeeList = new List<Funcionário>();
+            this.gerenteList = new List<Gerente>();
+            this.repositorList = new List<Repositor>();
+        }
 
-      
        
-            public Gerente() : base()
-            {
-               
-            }
-       
+
         public string g_userName { get; set; }
 
         public string g_password { get; set; }
@@ -30,8 +31,6 @@ namespace Supermercado
             this.g_cargo = "Gerente";
         }
 
-
-
         public override string ToString()
         {
             string result = "Nome" + "       " + "Password " + "    " + "Cargo" + "\n";
@@ -43,13 +42,12 @@ namespace Supermercado
             return result;
         }
 
-
+        //Funcionário f = new Funcionário();
 
 
         public void MenuGerente()
         {
             int escolha = 0;
-
             while (escolha != 7)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -66,7 +64,6 @@ namespace Supermercado
 
                 escolha = int.Parse(Console.ReadLine());
                 Console.Clear();
-
 
                 switch (escolha)
                 {
@@ -97,6 +94,7 @@ namespace Supermercado
                     case 0:
                         Funcionário f = new Funcionário();
                         f.LoginForm();
+
                         break;
                         
                     default:
@@ -108,30 +106,10 @@ namespace Supermercado
             }
         }
 
-        public override void LoginForm()
-        {
-            base.LoginForm();
-        }
+
+       
 
 
-        public bool removeFromContacs(string userName)
-        {
-            int indexAremover = -1;
-            for (int i = 0; i < this.employeeList.Count; i++)
-            {
-                if (this.employeeList[i].userName.ToLower().Equals(userName.ToLower()))
-                {
-                    indexAremover = i;
-                }
-            }
-            if (indexAremover != -1)
-            {
-                this.employeeList.RemoveAt(indexAremover);
-                return true;
-            }
-
-            return false;
-        }
 
 
     }

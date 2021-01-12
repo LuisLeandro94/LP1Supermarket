@@ -28,20 +28,25 @@ namespace Supermercado
 
         public List<Funcionário> employeeList;
         public List<Gerente> gerenteList;
+        public List<Repositor> repositorList;
+
+ 
         public Funcionário()
         {
             this.employeeList = new List<Funcionário>();
             this.gerenteList = new List<Gerente>();
+            this.repositorList = new List<Repositor>();
             active = true;
             entryTime = DateTime.Now;
         }
 
-        public Funcionário(string firstName, string lastName ,string userName, string password)
+
+        public Funcionário(string firstName, string lastName ,string phoneNumber, string userName, string password)
         {
-           // this.id = id;
+            //this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
-           // this.phoneNumber = phoneNumber;
+            this.phoneNumber = phoneNumber;
             //this.address = address;
             //this.birthDate = birthDate;
             //this.salary = salary;
@@ -53,15 +58,38 @@ namespace Supermercado
             this.cargo = "Funcionario";
         }
 
+        //Gerente g = new Gerente();
+
         public override string ToString()
         {
-            string result = "Nome" + "       " + "UserName " + "    " + "PassWord" + "\n";
+            string result = "Nome" + "          " + "UserName " + "      " + "PassWord" + "\n";
             foreach (Funcionário f in  this.employeeList)
             {
-                result += f.firstName + " " + f.lastName + "     " + f.userName + "     " + f.password + " \n";
+                result += f.firstName + " " +f.lastName + "     " + f.userName + "         " + f.password + " \n";
             }
 
             return result;
+        }
+
+        public bool removeFromContacs(string userName)
+        {
+            Console.WriteLine(employeeList.Count);
+            int indexAremover = -1;
+            for (int i = 0; i < employeeList.Count; i++)
+            {
+                if (employeeList[i].userName.ToLower().Equals(userName.ToLower()))
+                {
+                    indexAremover = i;
+                }
+            }
+            if (indexAremover != -1)
+            {
+                employeeList.RemoveAt(indexAremover);
+                return true;
+            }
+
+
+            return false;
         }
 
 
@@ -72,14 +100,22 @@ namespace Supermercado
           
             do
             {
-              
-                Console.WriteLine("--------LOGIN--------");
-                Console.WriteLine("Username:");
-                string username = Console.ReadLine();
-                Console.WriteLine("Password:");
-                string password = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("|-----------------------------------------|");
+                Console.WriteLine("|                   LOGIN                 |");
+                Console.WriteLine("|-----------------------------------------|");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("|                 Username                |");
+                var username = Console.ReadLine(); 
+                Console.WriteLine("|-----------------------------------------|");
+                Console.WriteLine("|                   Password              |");
+                var password = Console.ReadLine();
+                Console.WriteLine("|-----------------------------------------|");
+                Console.ResetColor();
+
 
                //AQUI ESTÁ ALGUM ERRO...METO OS DADOS DIREITOS E DA ERRO, TENHO DE CORRIGIR
+                
                 foreach (Gerente gerente in gerenteList)
                 {
 
@@ -87,9 +123,9 @@ namespace Supermercado
                     if (username == gerente.g_userName && password == gerente.g_password)
                     {
                         Console.WriteLine("Login bem sucedido!");
-                        successfull = true;
+                        successfull = false;
                         Console.Clear();
-                        //SE QUISERES VER ISTO, COPIA PARA O LOGIN DO FUNCIONARIO 
+                        
                         Gerente gr = new Gerente();
                         gr.MenuGerente();
 
@@ -101,18 +137,17 @@ namespace Supermercado
                         Console.WriteLine("Username ou Password estão errrados.\n");
                     }
                 }
-                
+
                 foreach (Funcionário funcionario in employeeList)
                 {
-                
-                    
-                    if (username == funcionario.userName  &&  password == funcionario.password)
+
+
+                    if (username == funcionario.userName && password == funcionario.password)
                     {
                         Console.WriteLine("Login bem sucedido!");
                         successfull = true;
                         Console.Clear();
-                        
-
+                      
 
                         break;
                     }
@@ -122,9 +157,25 @@ namespace Supermercado
                     }
                 }
 
-               
+                foreach (Repositor repositor in repositorList)
+                {
 
 
+                    if (username == repositor.r_userName && password == repositor.r_password)
+                    {
+                        Console.WriteLine("Login bem sucedido!");
+                        successfull = true;
+                        Console.Clear();
+                        Repositor r = new Repositor();
+                        r.MenuRepostior();
+
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Username ou Password estão errrados.\n");
+                    }
+                }
 
             } while (successfull==false);
            

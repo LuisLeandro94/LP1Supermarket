@@ -6,12 +6,17 @@ namespace Supermercado
     {
         static void Main(string[] args)
         {
-            Funcionário f = new Funcionário();
-            f.employeeList.Add(new Funcionário("Luis", "Ribeiro", "abc", "teste"));
-
             Gerente g = new Gerente();
-            g.gerenteList.Add(new Gerente("marco", "oliveira"));
-            g.gerenteList.Add(new Gerente("a", "b"));
+            Funcionário f = new Funcionário();
+            f.employeeList.Add(new Funcionário("Luis", "Ribeiro","967852669" , "abc", "teste"));
+            g.employeeList.Add(new Funcionário("Luis", "Ribeiro", "967852669", "abc", "teste"));
+           
+            f.gerenteList.Add(new Gerente("marco", "oliveira"));
+            f.repositorList.Add(new Repositor("repositor", "123"));
+
+            
+         
+            
 
             int escolha = 0;
            
@@ -27,9 +32,8 @@ namespace Supermercado
                 Console.WriteLine("|    2-REGISTAR                      |");
                 Console.WriteLine("|    3-LOGIN                         |");
                 Console.WriteLine("|    4-LISTA DE GERENTES (TESTE)     |");
-                Console.WriteLine("|    5-Apagar                        |");
-                Console.WriteLine("|    6-Limpar Lista                  |");
-                Console.WriteLine("|    7-Sair                          |");
+                Console.WriteLine("|    5-LIMPAR LISTA  FUNCIONARIOS - REMOVER   |");
+                Console.WriteLine("|    6-SAIR                          |");
                 Console.WriteLine("|------------------------------------|");
                 Console.ResetColor();
 
@@ -44,12 +48,11 @@ namespace Supermercado
                         break;
 
                     case 2:
-                        Console.WriteLine("fistName:\nlastName:\nuserName:\npassWord:");
-                        f.employeeList.Add(new Funcionário(Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine()));
+                        Console.WriteLine("fistName:\nlastName:\ntelefone:\nuserName:\npassWord:");
+                        f.employeeList.Add(new Funcionário(Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine(), Console.ReadLine()));
                         break;
 
-                    case 3:
-                       
+                    case 3:    
                         f.LoginForm();
                         break;
 
@@ -58,17 +61,25 @@ namespace Supermercado
                         break;
 
                     case 5:
-
-                    break;
+                        //    f.employeeList.Clear();
+                        Console.WriteLine("Apagar Funcionario");
+                        string contactoAEliminarNome = Console.ReadLine();
+                        bool resultado = f.removeFromContacs(contactoAEliminarNome);
+                        if (resultado)
+                        {
+                            Console.WriteLine("Eliminado com sucesso");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Falhou");
+                        }
+                        Console.WriteLine("Clique Enter para voltar ao menu principal");
+                       
+                        break;
 
                     case 6:
-                                          
-                    break;
-                    case 7:
-                    
-                    Console.WriteLine("Escolheu sair");
-                    
-                    break;
+                        Console.WriteLine("Escolheu sair");
+                        break;
                     default:
                     Console.WriteLine("Opção Inválida");
                     break;
@@ -79,7 +90,9 @@ namespace Supermercado
 
             //Quando sair
             Console.WriteLine("@SuperMercado)");
-           
+
+            
+        
     }
 }
 }
