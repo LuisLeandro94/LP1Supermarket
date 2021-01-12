@@ -45,7 +45,6 @@ namespace Supermercado
                         break;
 
                     case 0:
-                        Funcionário f = new Funcionário();
                         f.LoginForm();
                         break;
 
