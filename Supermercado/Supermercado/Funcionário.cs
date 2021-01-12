@@ -40,7 +40,6 @@ namespace Supermercado
             entryTime = DateTime.Now;
         }
 
-
         public Funcionário(string firstName, string lastName ,string phoneNumber, string userName, string password)
         {
             //this.id = id;
@@ -91,7 +90,6 @@ namespace Supermercado
 
             return false;
         }
-
 
         #region Login
         public virtual void LoginForm()
@@ -199,7 +197,7 @@ namespace Supermercado
             Console.WriteLine("Sucesso");
 
             //Validação
-            /*
+            
            if (File.Exists(fileName))
            {
                Console.WriteLine("Ficheiro antigo eliminado.");
@@ -214,7 +212,7 @@ namespace Supermercado
                binaryFormatter.Serialize(fileStream, employeeToCreate);
            }
            fileStream.Close();
-       }*/
+       
 
             #endregion
 

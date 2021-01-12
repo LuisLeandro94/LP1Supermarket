@@ -28,7 +28,7 @@ namespace Supermercado
                 Console.WriteLine("|------------------------------------|");
                 Console.ResetColor();
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("|    1-LISTA DE FUNCIOANRIOS (TESTE) |");
+                Console.WriteLine("|    1-LISTA DE FUNCIONÁRIOS (TESTE) |");
                 Console.WriteLine("|    2-REGISTAR                      |");
                 Console.WriteLine("|    3-LOGIN                         |");
                 Console.WriteLine("|    4-LISTA DE GERENTES (TESTE)     |");
