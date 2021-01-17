@@ -14,9 +14,9 @@ namespace Supermercado
 
         public Repositor(string r_userName, string r_password)
         {
-            this.r_userName = r_userName;
-            this.r_password = r_password;
-            this.r_cargo = "Repositor";
+            this.userName = r_userName;
+            this.password = r_password;
+            this.cargo = "Repositor";
         }
 
         public void MenuRepostior()
@@ -45,7 +45,7 @@ namespace Supermercado
                         break;
 
                     case 0:
-                        f.LoginForm();
+                        LoginForm();
                         break;
 
                     default:

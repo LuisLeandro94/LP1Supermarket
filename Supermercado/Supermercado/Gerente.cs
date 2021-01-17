@@ -3,47 +3,44 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
 namespace Supermercado
 {
     [Serializable]
 
     public class Gerente : Funcionário
     {
-
+        
         public Gerente() : base()
         {
-            this.employeeList = new List<Funcionário>();
-            this.gerenteList = new List<Gerente>();
-            this.repositorList = new List<Repositor>();
+           
+            
+            //this.gerenteList = new List<Gerente>();
+            //this.repositorList = new List<Repositor>();
         }
-
-       
-
+        
         public string g_userName { get; set; }
-
         public string g_password { get; set; }
         public string g_cargo { get; set; }
 
         public Gerente(string g_userName, string g_password)
         {
-            this.g_userName = g_userName;
-            this.g_password = g_password;
-            this.g_cargo = "Gerente";
+            this.userName = g_userName;
+            this.password = g_password;
+            this.cargo = "Gerente";
         }
 
-        public override string ToString()
-        {
-            string result = "Nome" + "       " + "Password " + "    " + "Cargo" + "\n";
-            foreach (Gerente g in this.gerenteList)
-            {
-                result += g.g_userName + " " + g.g_password + "     " + g.g_cargo + "   \n";
-            }
+        /* public override string ToString()
+         {
+             string result = "Nome" + "       " + "Password " + "    " + "Cargo" + "\n";
+             foreach (Gerente g in this.gerenteList)
+             {
+                 result += g.g_userName + " " + g.g_password + "     " + g.g_cargo + "   \n";
+             }
 
-            return result;
+             return result;
         }
-
-        //Funcionário f = new Funcionário();
-
+        */
 
         public void MenuGerente()
         {
@@ -68,33 +65,37 @@ namespace Supermercado
                 switch (escolha)
                 {
                     case 1:
-                        // ERRO AO APAGAR
-                        Console.WriteLine("Apagar Funcionario");
-                        string contactoAEliminarNome = Console.ReadLine();
-                        bool resultado = removeFromContacs(contactoAEliminarNome);
-                        if (resultado)
-                        {
-                            Console.WriteLine("Eliminado com sucesso");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Falhou");
-                        }
-                        Console.WriteLine("Clique Enter para voltar ao menu principal");
+
+                        int remover = 0;
+                        Console.WriteLine(ToString());
+                        Console.WriteLine("ID A REMOVER: ");
+                        remover = int.Parse(Console.ReadLine());
+
+                        employeeList.RemoveAt(remover);
+
+                        //CÓDIGO REMOVER NÃO ESTÁ A FUNCIONAR MAS TEM A FORMA ANTERIOR
+
+                        /* string contactoAEliminarNome = Console.ReadLine();
+                         Console.WriteLine(contactoAEliminarNome);
+                         bool resultado = removeFromeEmployeeList(contactoAEliminarNome);
+                         if (resultado)
+                         {
+                             Console.WriteLine("Eliminado com sucesso");
+                         }
+                         else
+                         {
+                             Console.WriteLine("Falhou");
+                         }
+                         Console.WriteLine("Clique Enter para voltar ao menu principal");*/
                         break;
 
                     case 2:
                         Console.WriteLine("Vender Produtos");
                         break;
 
-                    case 3:
-                        Console.WriteLine("Escolheu 3");
-                        break;
-
                     case 0:
-                        Funcionário f = new Funcionário();
-                        f.LoginForm();
-
+                   
+                        LoginForm();
                         break;
                         
                     default:
@@ -106,11 +107,37 @@ namespace Supermercado
             }
         }
 
+        public override string ToString()
+        {
+            int i = 0;
+            string result ="ID" + "   " + "Nome" + "          " + "UserName " + "      " + "PassWord" + "\n";
+            foreach (Funcionário f in employeeList)
+            {
+                result += i++ + f.firstName + " " + f.lastName + "     " + f.userName + "         " + f.password + " \n";
+            }
 
-       
+            return result;
 
 
 
+        }
 
+        public bool removeFromeEmployeeList(string nome)
+        {
+            int indexAremover = -1;
+            for (int i = 0; i < employeeList.Count; i++)
+            {
+                if (employeeList[i].userName.ToLower().Equals(nome.ToLower()))
+                {
+                    indexAremover = i;
+                }
+            }
+            if (indexAremover != -1)
+            {
+                employeeList.RemoveAt(indexAremover);
+                return true;
+            }
+            return false;
+        }
     }
 }
